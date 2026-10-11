@@ -3,13 +3,13 @@
 --------------------------------------------------------------------------------
 
 INSERT INTO Memories (memory, bgColor, creator)
-VALUES ("Me and my dad on a sailboat", "blue", "Kevin");
+VALUES ("Drinking orange juice in a Japanese castle", "orange", "Pi");
 
 INSERT INTO Memories (memory, bgColor, creator)
-VALUES ("My visit to the Met in New York", "red", "Kevin");
+VALUES ("Visiting the Met in New York", "darkred", "Pi");
 
 INSERT INTO Memories (memory, bgColor, creator)
-VALUES ("My brother's sixth birthday party", "green", "Kevin");
+VALUES ("Showing my online friend around my hometown", "green", "Pi");
 
 --------------------------------------------------------------------------------
 -- Down
