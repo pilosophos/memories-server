@@ -14,12 +14,24 @@ const db = await open({
 });
 
 app.post('/submit', urlencodedParser, (req: Request, res: Response) => {
-  console.log(req)
-  const { memory, bgColor, creator } = req.body;
-  db.run(
-    'INSERT INTO Memories (memory, bgColor, creator) VALUES (?, ?, ?);',
-    [memory, bgColor, creator]
-  );
+  let memory, bgColor, creator;
+
+  try {
+    let { memory, bgColor, creator } = req.body;
+  } catch (error) {
+    res.sendStatus(400);
+    return;
+  }
+
+  try {
+    db.run(
+      'INSERT INTO Memories (memory, bgColor, creator) VALUES (?, ?, ?);',
+      [memory, bgColor, creator]
+    );
+  } catch (error) {
+      res.sendStatus(500);
+      return;
+  }
 
   res.sendStatus(200);
 });
