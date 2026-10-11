@@ -17,7 +17,7 @@ app.post('/submit', urlencodedParser, (req: Request, res: Response) => {
   let memory, bgColor, creator;
 
   try {
-    let { memory, bgColor, creator } = req.body;
+    ({ memory, bgColor, creator } = req.body);
   } catch (error) {
     res.sendStatus(400);
     return;
