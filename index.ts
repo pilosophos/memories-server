@@ -51,13 +51,19 @@ app.post('/submit', urlencodedParser, async (req: Request, res: Response) => {
   io.emit('memoryAdded', {memory, bgColor, creator});
 });
 
-// app.get('/memories', async (req: Request, res: Response) => {
-//   try {
-//     await db.run()
-//   }
-// })
+app.get('/memories', async (req: Request, res: Response) => {
+  let memories;
+  try {
+    memories = await db.all('SELECT memory, bgColor, creator FROM Memories;')
+  } catch (error) {
+    console.error(error)
+    res.sendStatus(500);
+    return;
+  }
 
-io.listen(4000);
-app.listen(port, () => {
+  res.send(JSON.stringify(memories));
+})
+
+server.listen(port, () => {
   console.log(`Server listening on ${port}`);
 });
