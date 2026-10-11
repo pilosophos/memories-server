@@ -26,18 +26,19 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 });
 
-app.post('/submit', urlencodedParser, (req: Request, res: Response) => {
+app.post('/submit', urlencodedParser, async (req: Request, res: Response) => {
   let memory, bgColor, creator;
 
   try {
     ({ memory, bgColor, creator } = req.body);
+    console.log('Received a memory: ', memory);
   } catch (error) {
     res.sendStatus(400);
     return;
   }
 
   try {
-    db.run(
+    await db.run(
       'INSERT INTO Memories (memory, bgColor, creator) VALUES (?, ?, ?);',
       [memory, bgColor, creator]
     );
@@ -49,6 +50,12 @@ app.post('/submit', urlencodedParser, (req: Request, res: Response) => {
   res.sendStatus(200);
   io.emit('memoryAdded', {memory, bgColor, creator});
 });
+
+// app.get('/memories', async (req: Request, res: Response) => {
+//   try {
+//     await db.run()
+//   }
+// })
 
 io.listen(4000);
 app.listen(port, () => {
