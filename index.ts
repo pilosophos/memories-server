@@ -6,7 +6,7 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 
 const app: Express = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const server = createServer(app);
