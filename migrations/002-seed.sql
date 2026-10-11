@@ -3,7 +3,7 @@
 --------------------------------------------------------------------------------
 
 INSERT INTO Memories (memory, bgColor, creator)
-VALUES ("My friend Mori drinking orange juice in a castle", "orange", "Pi");
+VALUES ("Mori drinking orange juice in a castle", "orange", "Pi");
 
 INSERT INTO Memories (memory, bgColor, creator)
 VALUES ("A happy corgi at a Buddhist temple", "darkred", "Pi");
