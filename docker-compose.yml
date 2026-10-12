@@ -1,0 +1,9 @@
+services:
+  memories:
+    restart: always
+    build: .
+    environment:
+      PORT: ${PORT}
+      NODE_ENV: ${NODE_ENV}
+    ports:
+      - "${PORT}:8084"
