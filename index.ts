@@ -4,10 +4,14 @@ import { open } from 'sqlite';
 import bodyParser from 'body-parser';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import cors from 'cors';
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
+app.use(cors({
+    origin: ["https://pilosophos.com"]
+}))
 
 const server = createServer(app);
 const io = new Server(server, {
